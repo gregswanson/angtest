@@ -1,9 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Angular Test</title>
+	<title>Name Caluculator</title>
+	<script type="text/javascript" src="angular.min.js"></script>
+	<script type="text/javascript" src="app.js"></script>
 </head>
-<body>
-<h1>Hello World</h1>
+<body ng-app="nameCalc">
+	<h1>Name Calculator</h1>
+		<div ng-controller="nameCalcController">
+			<div>Your name: 
+			<input type="text" name="name" 
+					ng-model="name"
+					ng-keyup = "displayNumeric()"
+			></div>
+			<div>Total numeric value of person's name is: {{ totalValue }}</div>
+		</div>
 </body>
 </html>
