@@ -15,25 +15,34 @@ function lunchCheckController($scope){
 
 	$scope.checkDishes = function(){
 		var dishArray = $scope.dishes.split(',');
-		var dishNum = dishArray.length;
+		var newDishArray = [];
+		var dishNum;
 		
-		if (dishNum == 0 || dishNum == 1){
-			$scope.msg = "Please enter data first";
-			el.style.color = "red";
-			el.style.border = "1px solid red";
-			$scope.dishes = "";
-		} else if (dishNum < 4 && dishNum > 1){
-			$scope.msg = "Enjoy!";
-			el.style.color = "green";
-			el.style.border = "1px solid green";
-			$scope.dishes = "";
-		} else if (dishNum >= 4) {
-			$scope.msg = "Too much!";
-			el.style.color = "green";
-			el.style.border = "1px solid green";
-			$scope.dishes = "";
+		for (var i=0; i < dishArray.length; i++){
+			if (dishArray[i] !== ''){
+				newDishArray.push(dishArray[i].trim());
+			};
+			
+			dishNum = newDishArray.length
+			
+			if (dishNum == 0){
+				$scope.msg = "Please enter data first";
+				el.style.color = "red";
+				el.style.border = "1px solid red";
+				$scope.dishes = "";
+			} else if (dishNum <= 3 && dishNum > 0){
+				$scope.msg = "Enjoy!";
+				el.style.color = "green";
+				el.style.border = "1px solid green";
+				$scope.dishes = "";
+			} else if (dishNum > 3) {
+				$scope.msg = "Too much!";
+				el.style.color = "green";
+				el.style.border = "1px solid green";
+				$scope.dishes = "";
+			};
 		};
-
+		
 	}
 }
 
