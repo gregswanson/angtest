@@ -1,30 +1,58 @@
 (function (){
 'use strict';
 
-angular.module("nameCalc", [])
+angular.module("shopApp", [])
+.controller('shoppingListAddCtrl', shoppingListAddCtrl)
+.controller('shoppingListShowCtrl', shoppingListShowCtrl)
+.service('shoppingListService', shoppingListService);
 
-.controller("nameCalcController", function($scope){
-	$scope.name = "";
-	$scope.totalValue = 0;
-	$scope.displayNumeric = function(){
-		
-		//get total value
-		var totalNameValue = calculateNumericForString($scope.name); 
-		$scope.totalValue = totalNameValue; 
+shoppingListAddCtrl.$inject = ['shoppingListService'];
+function shoppingListAddCtrl(shoppingListService){
+	var itemAdder = this;
+
+	itemAdder.itemName = "";
+	itemAdder.itemQuanity = "";
+
+	itemAdder.addItem = function(){
+		shoppingListService.addItem(itemAdder.itemName, itemAdder.itemQuanity);
+		itemAdder.itemName = "";
+		itemAdder.itemQuanity = "";
+	};
+};	
+
+shoppingListShowCtrl.$inject = ['shoppingListService'];
+function shoppingListShowCtrl(shoppingListService){
+	var showList = this;
+
+	showList.items = shoppingListService.getItems();
+
+	showList.removeItem = function(itemIndex) {
+		shoppingListService.removeItem(itemIndex);
+	};
+};
+
+function shoppingListService() {
+	var service = this;
+
+	// List of items
+	var items = [];
+
+	service.addItem = function(itemName, quantity) {
+		var item = {
+			name: itemName,
+			quantity: quantity
+		};
+		items.push(item);
 	};
 
-	function calculateNumericForString(string){
-		var totalStringValue = 0;
-		
-		for (var i = 0; i < string.length; i++){
-			totalStringValue += string.charCodeAt(i);
-		}
+	service.getItems = function(){
+		return items;
+	};
 
-		return totalStringValue;
-
+	service.removeItem = function(itemIndex) {
+		items.splice(itemIndex, 1);
 	}
+}
 
-
-});
 
 })();

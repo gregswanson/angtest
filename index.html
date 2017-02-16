@@ -5,15 +5,20 @@
 	<script type="text/javascript" src="angular.min.js"></script>
 	<script type="text/javascript" src="app.js"></script>
 </head>
-<body ng-app="nameCalc">
-	<h1>Name Calculator</h1>
-		<div ng-controller="nameCalcController">
-			<div>Your name: 
-			<input type="text" name="name" 
-					ng-model="name"
-					ng-keyup = "displayNumeric()"
-			></div>
-			<div>Total numeric value of person's name is: {{ totalValue }}</div>
+<body ng-app="shopApp">
+	<h1>Custom Service</h1>
+		<div ng-controller="shoppingListAddCtrl as itemAdder">
+			<input type="text" ng-model="itemAdder.itemName" placeholder="item name">
+			<input type="text" ng-model="itemAdder.itemQuanity" placeholder="item quanitiy">
+			<button ng-click="itemAdder.addItem()">Add item to list</button>
+		</div>
+		<div ng-controller="shoppingListShowCtrl as showList">
+			<ol>
+				<li ng-repeat="item in showList.items">
+					{{ item.quantity }} of {{ item.name }}
+					<button ng-click="showList.removeItem($index)">Remove Item</button>
+				</li>
+			</ol>
 		</div>
 </body>
 </html>
