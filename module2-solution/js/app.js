@@ -13,11 +13,9 @@ function toBuyController(shoppingListCheckOffService) {
 	
 	list1.buy = function(itemIndex){
 		shoppingListCheckOffService.buy(itemIndex);
-		console.log(itemIndex);
 	};
 
-	//list1.empty = shoppingListCheckOffService.itemEmpty;
-}
+};
 
 
 //alreadyBoughtController
@@ -27,9 +25,7 @@ function alreadyBoughtController (shoppingListCheckOffService) {
 
 	list2.items = shoppingListCheckOffService.boughtItems();
 
-	//list2.empty = shoppingListCheckOffService.purchasedEmpty;
-
-	};
+};
 
 
 //shoppingListCheckOffService
@@ -53,7 +49,6 @@ function shoppingListCheckOffService() {
 
 	var itemEmpty = false;
 	var purchasedEmpty = true;
-
 	
 	service.toBuyItems = function(){
 			return items;
@@ -66,10 +61,7 @@ function shoppingListCheckOffService() {
 	service.buy = function(itemIndex) {
 		purchased.push(items[itemIndex]);
 		items.splice(itemIndex, 1);
-
 		};
-
 	};
-
 
 })();
