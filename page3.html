@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="styles.css">
+	<title>Menu Catagories App</title>
+</head>
+<body ng-app="menuCatApp">
+	<h1>Using $http Service</h1>
+	<div ng-controller="menuCatCtrl as menu">
+		<h3>Menu Catagories List</h3>
+		<ul>
+			<li ng-repeat="catagory in menu.catagories">
+				({{ catagory.short_name }})
+				{{ catagory.name }}
+			</li>
+		</ul>
+	</div>
+	
+
+
+
+
+
+
+<script src="angular.min.js"></script>
+<script src="app3.js"></script>
+</body>
+</html>
