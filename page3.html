@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" href="style.css">
 	<title>Menu Catagories App</title>
 </head>
 <body ng-app="menuCatApp">
@@ -10,18 +10,12 @@
 		<h3>Menu Catagories List</h3>
 		<ul>
 			<li ng-repeat="catagory in menu.catagories">
-				({{ catagory.short_name }})
+				(<a href="" ng-click="menu.logMenuItems(catagory.short_name)">{{ catagory.short_name }}</a>)
 				{{ catagory.name }}
 			</li>
 		</ul>
 	</div>
 	
-
-
-
-
-
-
 <script src="angular.min.js"></script>
 <script src="app3.js"></script>
 </body>
