@@ -2,7 +2,26 @@
 angular.module('shopApp', [])
 .controller('shoppingListCtrl1', shoppingListCtrl1)
 .controller('shoppingListCtrl2', shoppingListCtrl2)
-.factory('shoppingListFactory', shoppingListFactory);
+.factory('shoppingListFactory', shoppingListFactory)
+.directive('listItemDescription', listItemDescription)
+.directive('listItem', listItem);
+
+//directive 1
+function listItemDescription(){
+	var ddo =  {
+		template: '{{ item.quantity }} of {{ item.name }}'
+	};
+	return ddo;
+};
+
+//directive 2
+function listItem(){
+	var ddo = {
+		templateUrl: 'listItem.html'
+	};
+	return ddo;
+};
+
 
 //list 1 controller
 shoppingListCtrl1.$inject = ['shoppingListFactory'];
